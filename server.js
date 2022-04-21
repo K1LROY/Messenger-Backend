@@ -6,12 +6,14 @@ const databaseConnect = require("./config/database");
 const authRouter = require("./routes/authRoute");
 const bodyParser = require("body-parser");
 const cookieParser = require("cookie-parser");
+const messengerRoute = require("./routes/messengerRoute");
 
 dotenv.config();
 
 app.use(bodyParser.json());
 app.use(cookieParser());
 app.use("/api/messenger", authRouter);
+app.use("/api/messenger", messengerRoute);
 
 const port = process.env.PORT || 5000;
 app.get("/", (req, res) => {
